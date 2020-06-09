@@ -21,7 +21,7 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
 
    const getToken = (userId, token) => {
       getmeToken(userId, token).then((info) => {
-         console.log("INFORMATION", info);
+         //console.log("INFORMATION", info);
          if (info?.error) {
             setInfo({ ...info, error: info.error });
          } else {
@@ -48,7 +48,7 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
                   </button>
                </div>
             ) : (
-               <h3>Please add something to cart</h3>
+               <h3>Please add something to the cart</h3>
             )}
          </div>
       );
@@ -71,6 +71,23 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
             .then((Response) => {
                setInfo({ ...info, success: Response.success, loading: false });
                console.log("PAYMENT SUCCESS");
+
+               //creating Order
+               const orderData = {
+                  products: products,
+                  transaction_id: Response.transaction.id,
+                  amount: Response.transaction.amount,
+               };
+
+               createOrder(userId, token, orderData);
+
+               //empty the cart
+               cartEmpty(() => {
+                  console.log("Did we crash ?");
+               });
+
+               //force reload
+               setReload(!reload);
             })
             .catch((error) => {
                setInfo({ loading: false, success: false });

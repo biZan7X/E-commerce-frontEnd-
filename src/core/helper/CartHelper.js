@@ -47,7 +47,9 @@ export const removeItemFromCart = (productId) => {
 export const cartEmpty = (next) => {
    //function to empty the cart
    if (typeof window !== undefined) {
-      localStorage.removeItem("cart");
+      localStorage.removeItem("cart"); //there is no more anything named as cart
+      let cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart)); //introducing empty cart array
       next();
    }
 };
