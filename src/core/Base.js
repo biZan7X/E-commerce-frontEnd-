@@ -1,5 +1,13 @@
 import React from "react";
 import Menu from "./Menu";
+import logo from "../logo.png";
+
+/*
+LOGO:
+<div className="logo-bar">
+                  <img className="logo" alt="" src={logo} />
+               </div>
+*/
 
 const Base = ({
    title = "My Title", //default arguments

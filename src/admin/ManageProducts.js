@@ -33,6 +33,16 @@ const ManageProducts = () => {
       });
    };
 
+   const getCount = () => {
+      let count = 0;
+      products.map((p) => {
+         count = count + 1;
+      });
+      return count;
+   };
+
+   const currentProd = getCount();
+
    return (
       <Base title="Welcome admin" description="Manage products here">
          <h2 className="mb-4">All products:</h2>
@@ -41,7 +51,9 @@ const ManageProducts = () => {
          </Link>
          <div className="row">
             <div className="col-12">
-               <h2 className="text-center text-white my-3">Total 3 products</h2>
+               <h2 className="text-center text-white my-3">
+                  Total Products : {currentProd}
+               </h2>
 
                {products.map((product, index) => {
                   return (

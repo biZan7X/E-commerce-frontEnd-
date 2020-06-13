@@ -24,7 +24,11 @@ export default function Home() {
    }, []);
 
    return (
-      <Base title="Home Page" description="The Official biZan Merch Store">
+      <Base
+         title="Home Page"
+         description="The Official biZan Merch Store"
+         className="bg-dark text-white text-center"
+      >
          <div className="row text-center">
             <h1 className="text-white py-4">
                <u>Merchandises</u>:
@@ -32,7 +36,7 @@ export default function Home() {
             <div className="row">
                {products.map((product, index) => {
                   return (
-                     <div key="index" className="col-4 mb-4">
+                     <div key={index} className="col-4 mb-4">
                         <Card product={product} />
                      </div>
                   );
