@@ -54,7 +54,7 @@ export default function Home() {
 					margin: "2rem",
 				}}
 			>
-				Discussion Room
+				Discussion Rooms
 			</a>
 		</Base>
 	);
